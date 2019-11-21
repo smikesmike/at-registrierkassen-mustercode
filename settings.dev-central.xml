@@ -4,7 +4,8 @@
     xmlns="http://maven.apache.org/SETTINGS/1.1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-    <localRepository>.m2/repository</localRepository>
+<!--     <localRepository>.m2/repository</localRepository> -->
+
     <!-- dev-central -->
 
     <mirrors>
