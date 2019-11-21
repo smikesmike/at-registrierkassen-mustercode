@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings
+    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd"
+    xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <localRepository>.m2/repository</localRepository>
+    <!-- dev-central -->
+
+    <mirrors>
+        <mirror>
+            <!--This sends everything else to /public -->
+            <id>nexus</id>
+            <mirrorOf>external:*,!tapd-public</mirrorOf>
+            <url>http://nexus.dev-central.eu/content/groups/public</url>
+        </mirror>
+    </mirrors>
+
+    <profiles>
+        <profile>
+            <repositories>
+                <repository>
+                    <id>dc-releases</id>
+                    <url>http://nexus.dev-central.eu/content/groups/public</url>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>dc-snapshots</id>
+                    <url>http://nexus.dev-central.eu/content/groups/public-snapshots</url>
+                    <releases>
+                        <enabled>false</enabled>
+                        <updatePolicy>never</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>                
+            </repositories>
+
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>dc-releases</id>
+                    <name>Dev-Central Maven Repository</name>
+                    <url>http://nexus.dev-central.eu/content/groups/public</url>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+            <id>dc</id>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>dc</activeProfile>
+    </activeProfiles>
+
+    <pluginGroups>
+        <pluginGroup>org.mortbay.jetty</pluginGroup>
+    </pluginGroups>
+</settings>
+
